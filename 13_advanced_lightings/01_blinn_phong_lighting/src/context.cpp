@@ -188,7 +188,7 @@ bool Context::Init() {
         
     m_planeMaterial = Material::Create();
     m_planeMaterial->diffuse = Texture::CreateFromImage(
-                                Image::Load("./image/marble.jpg").get());
+                                Image::Load("./image/wood.png").get());
     m_planeMaterial->specular = grayTexture;
     m_planeMaterial->shininess = 256.0f;
 
