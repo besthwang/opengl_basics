@@ -96,7 +96,7 @@ void Context::DrawScene(const glm::mat4& view, const glm::mat4& projection, cons
 }
 ```
 
-<img src=images/13_shadow_map_scene.jpg>
+<img src=images/13_shadow_map_scene.JPG>
 
 ## Texture 클래스 코드 리팩토링
 - pixel type의 파라미터화

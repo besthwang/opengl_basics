@@ -96,4 +96,4 @@ void Context::DrawScene(const glm::mat4& view, const glm::mat4& projection, cons
 }
 ```
 - 정리된 장면
-<img src=images/13_shadow_map_scene.jpg>
+<img src=images/13_shadow_map_scene.JPG>

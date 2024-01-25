@@ -210,6 +210,7 @@ void Context::Render() {
     m_box->Draw(m_simpleProgram.get());
 
     m_lightingShadowProgram->Use();
+    //fragment shader uniform 설정
     m_lightingShadowProgram->SetUniform("viewPos", m_cameraPos);
     m_lightingShadowProgram->SetUniform("light.position", m_light.position);
     m_lightingShadowProgram->SetUniform("light.direction", m_light.direction);
@@ -221,6 +222,8 @@ void Context::Render() {
     m_lightingShadowProgram->SetUniform("light.diffuse", m_light.diffuse);
     m_lightingShadowProgram->SetUniform("light.specular", m_light.specular);
     m_lightingShadowProgram->SetUniform("blinn", (m_blinn ? 1 : 0));
+
+    //vertex shader 유니폼 설정
     m_lightingShadowProgram->SetUniform("lightTransform", lightProjection * lightView);
 
     glActiveTexture(GL_TEXTURE3);
