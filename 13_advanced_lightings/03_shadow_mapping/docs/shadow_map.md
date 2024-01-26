@@ -611,4 +611,4 @@ float ShadowCalculation(vec4 fragPosLight) {
         ```cpp
             float shadow = currentDepth > closestDepth ? 1.0 : 0.0;
         ```
-      
+<img src=images/13_ShadowCalculation_Result.png>
