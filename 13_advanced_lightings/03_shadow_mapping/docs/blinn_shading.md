@@ -5,7 +5,7 @@
     - Specular를 계산할 때 view와 reflection간의 각도가 90도보다 커지는 경우
     - doc product값이 0보다 작아져 cutoff가 발생   
 
-<img src="docs/images/13_phong_side_effect_reason.png"  alt = "blinn-phong shading" width="800">
+<img src="images/13_phong_side_effect_reason.png"  alt = "blinn-phong shading" width="800">
 [그림 1]
 
 - Blinn이 제안한 방식
@@ -14,7 +14,7 @@
 
 ## $$\frac{L+V}{\left\lvert L+V \right\rvert}$$
 
-<img src="docs/images/13_blinn_phong_idea.png"  alt = "blinn-phong shading" width="500">
+<img src="images/13_blinn_phong_idea.png"  alt = "blinn-phong shading" width="500">
 [그림 2]
 
 
@@ -23,11 +23,11 @@
 blinn shading 쪽이 넓은 영역을 차지함.
 녹색 하일라이트가 specular 항이다.
 
-<img src="docs/images/result_shading.jpg" width="600">
+<img src="images/result_shading.jpg" width="600">
 
 [그림 3] phong shading의 결과
 
-<img src="docs/images/blinn_phong_results.jpg" width="600">   
+<img src="images/blinn_phong_results.jpg" width="600">   
 
 [그림 4] blinn poing shading의 결과
 
