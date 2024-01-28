@@ -104,6 +104,11 @@ void Context::DispatchImGui() {
             m_cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
         }
 
+        if (ImGui::Button("save depth map")) {
+            printf("save depth map \n");
+            m_shadowMap->Save();
+        }
+
         ImGui::Image((ImTextureID)m_shadowMap->GetShadowMap()->Get(),
                     ImVec2(256, 256), 
                     ImVec2(0, 1), 
@@ -172,8 +177,7 @@ void Context::Render() {
 
     m_shadowMap->Bind();
     glClear(GL_DEPTH_BUFFER_BIT);
-    glViewport(0, 
-                0,
+    glViewport(0, 0,
                 m_shadowMap->GetShadowMap()->GetWidth(),
                 m_shadowMap->GetShadowMap()->GetHeight());
     m_simpleProgram->Use();
@@ -285,3 +289,5 @@ bool Context::Init() {
 
     return true;
 }
+
+

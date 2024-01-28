@@ -1,5 +1,9 @@
 #include "shadow_map.h"
 
+#define STB_IMAGE_WRITE_STATIC
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb/stb_image_write.h>
+
 ShadowMapUPtr ShadowMap::Create(int width, int height) {
     auto shadowMap = ShadowMapUPtr(new ShadowMap());
     if (!shadowMap->Init(width, height))
@@ -19,6 +23,10 @@ void ShadowMap::Bind() const {
 }
 
 bool ShadowMap::Init(int width, int height) {
+
+    m_width = width;
+    m_height = height;
+
     glGenFramebuffers(1, &m_framebuffer);
     Bind();
 
@@ -40,4 +48,37 @@ bool ShadowMap::Init(int width, int height) {
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     return true;
+}
+
+void ShadowMap::Save()
+{
+    //TexturePtr shadowMap = m_shadowMap->GetShadowMap();
+    Bind();
+
+        /// READ THE PIXELS VALUES from FBO AND SAVE TO A .PPM FILE
+    int             i, j, k;
+    float   *pixels = (float*)malloc(m_width*m_height*sizeof(float));
+    unsigned char  *img  = (unsigned char*)malloc(m_width*m_height*sizeof(unsigned char)); 
+
+    /// READ THE CONTENT FROM THE FBO
+    glReadBuffer(GL_DEPTH_ATTACHMENT);
+    glReadPixels(0, 0, m_width, m_height, GL_DEPTH_COMPONENT, GL_FLOAT, pixels);
+
+    k = 0;
+    for(i=0; i<m_height; i++)
+    {
+        for(j=0; j<m_width; j++)
+        {
+            
+            img[m_width*i+j] = 255*pixels[m_width*i+j];
+        }
+        //fprintf(output_image,"\n");
+    }
+
+    stbi_write_bmp("shadowMap.bmp", m_width, m_height, 1, img);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    free(pixels);
+    free(img);
 }

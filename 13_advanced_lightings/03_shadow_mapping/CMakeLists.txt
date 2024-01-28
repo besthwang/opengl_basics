@@ -24,7 +24,7 @@ add_executable(${PROJECT_NAME}
     src/shadow_map.cpp src/shadow_map.h
     )
 
-include(Dependency.cmake)
+include(thirdparties.cmake)
 
 # 우리 프로젝트에 include / lib 관련 옵션 추가
 target_include_directories(${PROJECT_NAME} PUBLIC ${DEP_INCLUDE_DIR})

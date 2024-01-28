@@ -606,9 +606,15 @@ float ShadowCalculation(vec4 fragPosLight) {
 
     - 현재 fragment가 그림자안에 있는지 판단하기 <br>
         The actual comparison is then simply a check whether currentDepth is higher than <br>
-        closestDepth and if so, the fragment is in shadow.
+        closestDepth and if so, the fragment is in shadow. <br>
+        저장된 depth값이 fragPosLight의 depth값보다 작은 경우 그림자가 생긴 것으로 판단
 
         ```cpp
             float shadow = currentDepth > closestDepth ? 1.0 : 0.0;
         ```
 <img src=images/13_ShadowCalculation_Result.png>
+
+- `현재 렌더링된 그림자의 문제` <br>
+이상한 줄무늬가 나타난다 => shadow acne
+
+## SHADOW MAP IMPROVEMENT

@@ -6,12 +6,14 @@
 CLASS_PTR(ShadowMap);
 class ShadowMap {
 public:
+    int m_width, m_height;
     static ShadowMapUPtr Create(int width, int height);
     ~ShadowMap();
 
     const uint32_t Get() const { return m_framebuffer; }
     void Bind() const;
     const TexturePtr GetShadowMap() const { return m_shadowMap; }
+    void Save();
 
 private:
     ShadowMap() {}
